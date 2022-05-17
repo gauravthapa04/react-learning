@@ -11,7 +11,7 @@ export default function WithButtonInput() {
     function ButtonClick() {
         setInputVal1(inputEl.current.value);
         //console.log('input control value is', inputEl.current.value);
-        //console.log('earlier our variable value is', lbltext);
+        //console.log('earlier our variable value is', InputVal1);
         //console.log('now our variable value is', inputEl.current.value);
     }
 

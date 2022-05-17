@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
-export default function WithoutButtonInput() {
-    const [InputVal2, setInputVal2] = useState("Change onchange function");
-    function HandleOnChnage(e) {
-        setInputVal2(e.target.value);
-    }
+export default function InputUppercase() {
+
+const [InputVal2, setInputVal2] = useState("");
+function HandleOnChnage(e) {
+    setInputVal2(e.target.value.toUpperCase());
+}
+
     return (
         <>
             <Container className='mt-5'>
                 <div className="card">
                     <div className="card-body">
                         <Row>
-                            <h1>Task Second Without Button</h1>
+                            <h1>Input Value In Uppercase</h1>
                             <Col md={12}>
                                 <div className="form-group">
                                     <label>{InputVal2}</label>

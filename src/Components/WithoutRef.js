@@ -3,10 +3,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 export default function WithoutRef() {
 
     const [InputVal1, setInputVal1] = useState("");
-    const [InputVal2, setInputVal2] = useState("Change onclick function");
+    const [InputVal2, setInputVal2] = useState("Change value on button click function");
 
     function ButtonClick() {
+        //console.log("inital value of input is", InputVal2);
+        //console.log("onChange Input value of input is", InputVal1);
         setInputVal2(InputVal1);
+        //console.log("on button click Input value of input is", InputVal2);
     }
     return (
         <Container className='mt-5'>

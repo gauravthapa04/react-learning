@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
-export default function WithoutButtonInput() {
-    const [InputVal2, setInputVal2] = useState("Change onchange function");
-    function HandleOnChnage(e) {
-        setInputVal2(e.target.value);
+import validator from 'validator'
+export default function InputLowercase() {
+
+    const [InputVal2, setInputVal2] = useState("");
+    // function HandleOnChnage(e) {
+    //     setInputVal2(e.target.value.toLowerCase());
+    // }
+    const validate = (inputText) =>{
+        setInputVal2(validator.trim(inputText).toLowerCase());
     }
     return (
         <>
@@ -11,11 +16,12 @@ export default function WithoutButtonInput() {
                 <div className="card">
                     <div className="card-body">
                         <Row>
-                            <h1>Task Second Without Button</h1>
+                            <h1>Input Value In Lowercase</h1>
                             <Col md={12}>
                                 <div className="form-group">
                                     <label>{InputVal2}</label>
-                                    <input type="text" className='form-control' onChange={HandleOnChnage} />
+                                    <input type="text" className='form-control' onChange={(e) => validate(e.target.value)} />
+                                    <p>Count Word {InputVal2.length}</p>
                                 </div>
                             </Col>
                         </Row>
