@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import Hedaer from "./components/Hedaer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Container, Row } from "react-bootstrap";
+import Page1 from "./components/Page1";
+import Page2 from "./components/Page2";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Container className="mt-2">
+        <Row>
+          <h2>React Learning</h2>
+          <BrowserRouter>
+            {/* <Hedaer /> */}
+            <Routes>
+              <Route path="/" element={<Page1 />}></Route>
+              <Route path="/page2" element={<Page2 />}></Route>
+            </Routes>
+          </BrowserRouter>
+        </Row>
+      </Container>
+    </>
   );
 }
 
