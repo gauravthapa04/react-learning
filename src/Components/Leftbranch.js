@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  useRef } from "react";
 import { Row, Col } from "react-bootstrap";
 export default function Leftbranch(props) {
   const [ChildInputVal1, setChildInputVal1] = useState(props.xyz);
-  const [FlagLeft, setFlagLeft] = useState(false);
+  const inputEl = useRef(null);
   //  console.log(props.xyz);
   //   useEffect(() => {
   //     setChildInputVal1(props.xyz);
   //   }, [props.xyz]);
 
   function RestData() {
-    setChildInputVal1(" ");
+    inputEl.current.value = '';
     props.abc("");
   }
 
-  function SetValueLeft(e) {
-    setChildInputVal1(e.target.value);
-    setFlagLeft(true);
+  function SetValueLeft() {
+    setChildInputVal1(inputEl.current.value);
   }
 
   return (
@@ -27,22 +26,14 @@ export default function Leftbranch(props) {
             <div className="form-group">
               <label>Value Form Main Branch</label>
 
-              {!FlagLeft ? (
                 <input
-                
                   type="text"
                   className="form-control"
                   defaultValue={props.xyz}
+                  ref={inputEl}
                   onChange={SetValueLeft}
                 />
-              ) : (
-                <input
-                  type="text"
-                  className="form-control"
-                  value={ChildInputVal1}
-                  onChange={SetValueLeft}
-                />
-              )}
+
             </div>
             <Row>
               <Col md={6}>

@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Row, Col } from "react-bootstrap";
 export default function Rightbranch(props) {
   const [ChildInputVal2, setChildInputVal2] = useState("");
-  const [Flag, setFlag] = useState(false);
+  const inputEl = useRef(null);
   //console.log(props.nmp);
   // useEffect(() => {
   //   setChildInputVal2(props.nmp);
   // }, [props.nmp]);
-  function SetValue(e){
-    setChildInputVal2(e.target.value);
-    setFlag(true)
+  function SetValue(){
+    setChildInputVal2(inputEl.current.value);
   }
   function RestData() {
-    setChildInputVal2(" ");
+    inputEl.current.value = '';
     props.abc("");
   }
 
@@ -24,13 +23,8 @@ export default function Rightbranch(props) {
             <h2 className="mt-2">Right Branch</h2>
             <div className="form-group">
               <label>Value Form Main Branch</label>
-                { 
-                !Flag ? 
-                <input type="text" className="form-control" defaultValue={props.nmp} onChange={SetValue} />
-                :
-                <input type="text" className="form-control" value={ChildInputVal2} onChange={SetValue}
-                />
-                }
+
+                <input type="text" className="form-control" defaultValue={props.nmp} ref={inputEl} onChange={SetValue} />
             </div>
             <Row>
               <Col md={6}>
