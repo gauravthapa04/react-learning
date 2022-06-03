@@ -1,31 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 export default function Leftbranch(props) {
-  const [ChildInputVal1, setChildInputVal1] = useState("");
-
-  useEffect(() => {
-    setChildInputVal1(props.xyz);
-  }, [props.xyz]);
+  const [ChildInputVal1, setChildInputVal1] = useState(props.xyz);
+  const [FlagLeft, setFlagLeft] = useState(false);
+  //  console.log(props.xyz);
+  //   useEffect(() => {
+  //     setChildInputVal1(props.xyz);
+  //   }, [props.xyz]);
 
   function RestData() {
-    setChildInputVal1("");
+    setChildInputVal1(" ");
     props.abc("");
+  }
+
+  function SetValueLeft(e) {
+    setChildInputVal1(e.target.value);
+    setFlagLeft(true);
   }
 
   return (
     <>
       <Col md={6} className="mt-2">
-        <div class="card">
-          <div class="card-body">
+        <div className="card">
+          <div className="card-body">
             <h2 className="mt-2">Left Branch</h2>
             <div className="form-group">
               <label>Value Form Main Branch</label>
-              <input
-                type="text"
-                className="form-control"
-                value={ChildInputVal1}
-                onChange={(e) => setChildInputVal1(e.target.value)}
-              />
+
+              {!FlagLeft ? (
+                <input
+                
+                  type="text"
+                  className="form-control"
+                  defaultValue={props.xyz}
+                  onChange={SetValueLeft}
+                />
+              ) : (
+                <input
+                  type="text"
+                  className="form-control"
+                  value={ChildInputVal1}
+                  onChange={SetValueLeft}
+                />
+              )}
             </div>
             <Row>
               <Col md={6}>

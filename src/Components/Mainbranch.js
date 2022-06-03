@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Col } from "react-bootstrap";
 import Leftbranch from "./Leftbranch";
 import Rightbranch from "./Rightbranch";
-export default function Mainbranch() {
+export default function Mainbranch(props) {
   const [InputVal1, setInputVal1] = useState("");
   const [InputVal2, setInputVal2] = useState("");
   const [InputVal3, setInputVal3] = useState("");
@@ -20,11 +20,13 @@ export default function Mainbranch() {
   function ChildData2(ChildInputVal2) {
     setInputVal2(ChildInputVal2);
   }
+
+
   return (
     <>
       <Col md={12}>
-        <div class="card">
-          <div class="card-body">
+        <div className="card">
+          <div className="card-body">
             <h2 className="mt-2">Main Branch</h2>
             <div className="form-group">
               <label>Value For Left Inner Branch</label>
