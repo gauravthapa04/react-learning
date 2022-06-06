@@ -1,10 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate, useLocation } from "react-router-dom";
-export default function Page2() {
+import { useNavigate, useSearchParams } from "react-router-dom";
+export default function Page4() {
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log(location);
+  const [searchParams, setSearchParams] = useSearchParams();
   function ReturnToHome(){
     navigate("/");
   }
@@ -15,7 +14,7 @@ export default function Page2() {
           <Col md={12}>
             <div className="card">
               <div className="card-body">
-                <div>Hi {location.state.name}</div>
+                <div>Hi {searchParams.get("name")}</div>
                 <button onClick={ReturnToHome}>Return To Homepage</button>
               </div>
             </div>

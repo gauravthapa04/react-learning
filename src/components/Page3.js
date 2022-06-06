@@ -1,11 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate, useLocation } from "react-router-dom";
-export default function Page2() {
+import { useNavigate } from "react-router-dom";
+export default function Page3() {
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log(location);
-  function ReturnToHome(){
+  function ReturnToHome2(){
+    localStorage.removeItem('Name');
     navigate("/");
   }
   return (
@@ -15,8 +14,9 @@ export default function Page2() {
           <Col md={12}>
             <div className="card">
               <div className="card-body">
-                <div>Hi {location.state.name}</div>
-                <button onClick={ReturnToHome}>Return To Homepage</button>
+                <p>Data From Local Storage</p>
+                <div>Hi {localStorage.getItem('Name')}</div>
+                <button onClick={ReturnToHome2}>Return To Homepage</button>
               </div>
             </div>
           </Col>
