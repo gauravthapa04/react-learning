@@ -4,9 +4,7 @@ import { useNavigate} from 'react-router-dom';
 export default function Page1() {
   const navigate = useNavigate();
   const [InputVal1, setInputVal1] = useState("");
-
   function SendToNextPage(){
-      console.log(InputVal1);
       navigate("/page2",{state:{name:InputVal1}});
   }
   return (
