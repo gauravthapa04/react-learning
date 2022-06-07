@@ -2,7 +2,7 @@ import React, { useState,  useRef } from "react";
 import { Row, Col } from "react-bootstrap";
 export default function Leftbranch(props) {
   const [ChildInputVal1, setChildInputVal1] = useState(props.xyz);
-  const [flag, setFlag] = useState(false);
+  const [checks, setChecks] = useState("")
   //const inputEl = useRef(null);
   //  console.log(props.xyz);
   //   useEffect(() => {
@@ -10,10 +10,31 @@ export default function Leftbranch(props) {
   //   }, [props.xyz]);
   const {xyz} = props;
   //console.log('test :'+ xyz);
-  if(!flag && xyz){
+
+  // if(flag && xyz){
+  //   setFlag(false);
+  // }
+
+  // if(!flag && xyz){
+  //   setChildInputVal1(xyz);
+  //   setChecks(xyz)
+  //   setFlag(true);
+  // }
+
+  const data = props.xyz;
+
+  if(data != checks){
     setChildInputVal1(xyz);
-    setFlag(true);
+    setChecks(xyz);
+    console.log(props.xyz);
+    console.log(checks);
   }
+
+
+
+  
+
+
   
   function RestData() {
     setChildInputVal1('');
