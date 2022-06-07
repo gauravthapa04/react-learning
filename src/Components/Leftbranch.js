@@ -2,21 +2,31 @@ import React, { useState,  useRef } from "react";
 import { Row, Col } from "react-bootstrap";
 export default function Leftbranch(props) {
   const [ChildInputVal1, setChildInputVal1] = useState(props.xyz);
-  const inputEl = useRef(null);
+  const [flag, setFlag] = useState(false);
+  //const inputEl = useRef(null);
   //  console.log(props.xyz);
   //   useEffect(() => {
   //     setChildInputVal1(props.xyz);
   //   }, [props.xyz]);
-
+  const {xyz} = props;
+  //console.log('test :'+ xyz);
+  if(!flag && xyz){
+    setChildInputVal1(xyz);
+    setFlag(true);
+  }
+  
   function RestData() {
-    inputEl.current.value = '';
+    setChildInputVal1('');
     props.abc("");
   }
 
-  function SetValueLeft() {
-    setChildInputVal1(inputEl.current.value);
+  function SetValueLeft(e) {
+    setChildInputVal1(e.target.value);
   }
-
+  function chtoparent(){
+    props.abc(ChildInputVal1);
+    //setFlag(false);
+  }
   return (
     <>
       <Col md={6} className="mt-2">
@@ -29,8 +39,7 @@ export default function Leftbranch(props) {
                 <input
                   type="text"
                   className="form-control"
-                  defaultValue={props.xyz}
-                  ref={inputEl}
+                  value={ChildInputVal1}
                   onChange={SetValueLeft}
                 />
 
@@ -41,7 +50,7 @@ export default function Leftbranch(props) {
                   <button
                     type="button"
                     className="btn btn-primary mt-2"
-                    onClick={() => props.abc(ChildInputVal1)}
+                    onClick={chtoparent}
                   >
                     Submit
                   </button>
