@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 export default function Page6() {
 const navigate = useNavigate();
 const [data, setData] = useState({
-  BasicInfo: {
+  basicinfo: {
     firstname: "",
     lastname: "",
     email: "",
     mobile: "",
     gender: "",
   },
-  Address: {
+  postalinfo: {
     address: "",
     country: "",
     state: "",
