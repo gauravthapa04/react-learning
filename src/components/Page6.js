@@ -5,20 +5,18 @@ import { useNavigate } from "react-router-dom";
 export default function Page6() {
 const navigate = useNavigate();
 const [data, setData] = useState({
-  basicinfo: {
     firstname: "",
     lastname: "",
     email: "",
     mobile: "",
     gender: "",
-  },
-  postalinfo: {
-    address: "",
-    country: "",
-    state: "",
-    city: "",
-    postalcode: "",
-  },
+});
+const [portalinfo, setPortalinfo] = useState({
+  address: "",
+  country: "",
+  state: "",
+  city: "",
+  postalcode: "",
 });
     
     function handleChange(evt){
@@ -29,9 +27,21 @@ const [data, setData] = useState({
           });
     }
     
+    function handleChange1(evt){
+      const value1 = evt.target.value;
+      setPortalinfo({
+          ...portalinfo,
+          [evt.target.name]: value1
+        });
+    }
+
     function DataSubmit(){
-        navigate("/fetchdata",{state:{name:data}});
-        //console.log(data);
+
+      const JsonData = {'basicinfo' : data, 'postaladdress' : portalinfo };
+      //const JsonData1 = {'postaladdress' : portalinfo };
+      const obj = JSON.stringify(JsonData);
+      navigate("/fetchdata",{state:obj});
+      //console.log(obj);
     }
 
 
@@ -100,13 +110,13 @@ const [data, setData] = useState({
                   <Col md={6}>
                     <div className="form-group">
                       <label>Flat / House Number</label>
-                      <input type="text" name="address" className="form-control" onChange={handleChange} />
+                      <input type="text" name="address" className="form-control" onChange={handleChange1} />
                     </div>
                   </Col>
                   <Col md={6}>
                     <div className="form-group">
                       <label htmlFor="country">Country</label>
-                      <select name="country" id="country" value={data.country} onChange={handleChange}>
+                      <select name="country" id="country" value={data.country} onChange={handleChange1}>
                         <option value="">Select Country</option>
                         <option value="india">India</option>
                         <option value="usa">USA</option>
@@ -116,7 +126,7 @@ const [data, setData] = useState({
                   <Col md={6}>
                     <div className="form-group">
                       <label htmlFor="state">State</label>
-                      <select name="state" id="state" value={data.state} onChange={handleChange}>
+                      <select name="state" id="state" value={data.state} onChange={handleChange1}>
                         <option value="">Select State</option>
                         <option value="Punjab">Punjab</option>
                         <option value="Haryana">Haryana</option>
@@ -126,7 +136,7 @@ const [data, setData] = useState({
                   <Col md={6}>
                     <div className="form-group">
                       <label htmlFor="city">City</label>
-                        <select id="city" name="city" value={data.city} onChange={handleChange}>
+                        <select id="city" name="city" value={data.city} onChange={handleChange1}>
                         <option value="">Select City</option>
                         <option value="Ambala">Ambala</option>
                         <option value="Asandh">Asandh</option>
@@ -138,9 +148,9 @@ const [data, setData] = useState({
                     </div>
                   </Col>
                   <Col md={6}>
-                    <div className="form-group" onChange={handleChange}>
+                    <div className="form-group" onChange={handleChange1}>
                       <label>Postal Code</label>
-                      <input type="text" name="postalcode" className="form-control" onChange={handleChange}/>
+                      <input type="text" name="postalcode" className="form-control" onChange={handleChange1}/>
                     </div>
                   </Col>
                 </Row>
