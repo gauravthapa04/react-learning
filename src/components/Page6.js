@@ -6,7 +6,9 @@ import ToggleButton from "react-toggle-button";
 export default function Page6() {
 
   const [toggal, setToggal] = useState(false);
-
+  const [conty, setListcountry] = useState();
+  const [state, setState] = useState();
+  const [city, setCity] = useState();
   var stateObject = {
     India: {
       Delhi: ["new Delhi", "North Delhi"],
@@ -22,6 +24,8 @@ export default function Page6() {
       Columbia: ["Washington", ""],
     },
   };
+
+
   const navigate = useNavigate();
   const [data, setData] = useState({
     firstname: "",
@@ -39,6 +43,9 @@ export default function Page6() {
     check_address: false,
   });
 
+
+
+
   function handleChange(evt) {
     const value = evt.target.value;
     setData({
@@ -47,6 +54,16 @@ export default function Page6() {
     });
   }
 
+  // const countySel = portalinfo.country;
+  // const stateSel = portalinfo.state;
+  // const districtSel = portalinfo.city;
+  const gg =[];
+  for (var country in stateObject) {
+    const listcountry = gg.push(country);
+  }
+  console.log(gg);
+  
+  
   function handleChange1(evt) {
     //const value1 = evt.target.value;
     const value1 =
@@ -78,6 +95,7 @@ export default function Page6() {
   }
   return (
     <>
+    {/* {{listItems}} */}
       <Container>
         <Row>
           <div className="card">
@@ -185,8 +203,14 @@ export default function Page6() {
                         onChange={handleChange1}
                       >
                         <option value="">Select Country</option>
-                        <option value="india">India</option>
-                        <option value="usa">USA</option>
+                        {
+                        gg.map((v,i) =>
+                           <option key={i} value={v}>{v}</option>
+                        )
+                        }
+                        {/* {{listItems}} */}
+                        {/* <option value="india">India</option>
+                        <option value="usa">USA</option> */}
                       </select>
                     </div>
                   </Col>
