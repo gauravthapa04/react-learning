@@ -262,7 +262,7 @@ export default function Page6() {
                         value={data.city}
                         onChange={handleChange1}
                       >
-                        <option value="">Select City</option>
+                        <option value="">Select City</option>  
                         {
                           state && addstate.length > 1 ?
                           addstate.map((v, i) => (
